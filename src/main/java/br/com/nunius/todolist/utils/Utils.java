@@ -9,11 +9,11 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
 public class Utils {
-    public void copyNonNullProperties(Object source, Object target) {
+    public static void copyNonNullProperties(Object source, Object target) {
         BeanUtils.copyProperties(source, target, getNullPropertiesName(source));
     }
 
-    public String[] getNullPropertiesName(Object source) {
+    public static String[] getNullPropertiesName(Object source) {
         final BeanWrapper src = new BeanWrapperImpl(source);
         PropertyDescriptor[] propsDescriptor = src.getPropertyDescriptors();
         Set<String> emptyNames = new HashSet<>();
