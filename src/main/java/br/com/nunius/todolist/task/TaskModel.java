@@ -14,7 +14,8 @@ import lombok.Data;
 @Data
 @Entity(name = "tasks")
 public class TaskModel {
-    @Id @GeneratedValue(generator = "UUID")
+    @Id
+    @GeneratedValue(generator = "UUID")
     private UUID id;
 
     @Column(length = 50)
@@ -30,4 +31,11 @@ public class TaskModel {
     private LocalDateTime createdAt;
 
     private UUID userId;
+
+    public void setTitle(String title) throws Exception {
+        if (title.length() > 50) {
+            throw new Exception("title must have a maximum of 50 characters");
+        }
+        this.title = title;
+    }
 }
